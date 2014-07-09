@@ -66,8 +66,7 @@
         <section>
           <div ng-repeat="profile in (filteredProfiles | filter:search)" class="col-md-3">
             <h1>{{ profile.name }}</h1>
-            <button class="btn btn-default" ng-click="open()">Open me!</button>
-            <img style="width: 120px; height: 120px;" src="{{ profile.thumbnail }}" alt="{{ profile.name }}" />
+            <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{ profile.thumbnail }}" alt="{{ profile.name }}" />
             <p> Subscribers: {{ profile.subscribers }}</p>
             <p> Views: {{ profile.total_views }}</p>
             <p> Average_views: {{ profile.average_views }}</p>
@@ -83,26 +82,37 @@
 
 
   <script type="text/ng-template" id="myModalContent.html">
+    <div>
         <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
+            <h3 class="modal-title">{{profiles.name}}</h3>
         </div>
         <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a ng-click="selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-4">
+                  <iframe width="300" height="169" ng-src="{{ profiles.video }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-xs-7">
+                  {{ profiles.about }}
+                </div>
+              </div>
+            </div>
+          
+            <span> Subscribers: {{ profiles.subscribers }}</span>
+            <span> Views: {{ profiles.total_views }}</span>
+            <span> Average views: {{ profiles.average_views }}</span>
+            <span> Growth rate: {{ profiles.growth_rate }}</span>
+            <span> Keywords: {{ profiles.keywords }}</span>
+        
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
+    </div>  
   </script>
 
 </div>
-
-
 
 
 

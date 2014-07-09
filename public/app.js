@@ -5,16 +5,18 @@ app.controller('FluentialCtrl', ['$scope', function ($scope) {
 	
 }]);
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+var ModalInstanceCtrl = function ($scope, $modalInstance, profiles) {
 
-  $scope.items = items;
+  $scope.profiles = profiles;
   $scope.selected = {
-    item: $scope.items[0]
+    profile: $scope.profiles[0]
   };
+
+  console.log($scope.selected);
 
   $scope.ok = function () {
   	console.log('Yo')
-    $modalInstance.close($scope.selected.item);
+    $modalInstance.close($scope.selected.profile);
   };
 
   $scope.cancel = function () {
@@ -29,7 +31,8 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
 
 app.controller('TagsCtrl', ['$scope','$modal','$log','$http', function ($scope,$modal,$log,$http) {
 
-	$scope.items = ['item1', 'item2', 'item3'];
+	// $scope.items = ['item1', 'item2', 'item3'];
+
 
 	$scope.filterProfiles = function() {
 		var tags = this.tags.map(function(tag) { return tag.text });
@@ -48,21 +51,22 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http', function ($scope,$
 		})
 	}
 
-  $scope.open = function (size) {
-  	// console.log(test)
+
+  $scope.open = function (size,index) {
+  	console.log(index);
     var modalInstance = $modal.open({
       templateUrl: 'myModalContent.html',
       controller: ModalInstanceCtrl,
       size: size,
       resolve: {
-        items: function () {
-          return $scope.items;
+        profiles: function () {
+          return $scope.filteredProfiles[index];
         }
       }
     });
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
+    modalInstance.result.then(function (selectedProfile) {
+      $scope.selected = selectedProfile;
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
@@ -88,7 +92,9 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http', function ($scope,$
 		total_views: 6543,
 		average_views: 933,
 		growth_rate: 56,
-		keywords: 'girl, uk, cats'
+		keywords: 'girl, uk, cats',
+		about: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repudiandae itaque, voluptatum sed magnam quaerat beatae animi voluptate eligendi quo velit quisquam ex necessitatibus, quibusdam, sit ullam ipsum. Dolores, ad!",
+		video: '//www.youtube.com/embed/h5Wg6VN1K_U'
 	},
 	{
 		name: 'joanan',
@@ -97,7 +103,9 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http', function ($scope,$
 		total_views: 6543,
 		average_views: 933,
 		growth_rate: 56,
-		keywords: 'house, car, bicycle'
+		keywords: 'house, car, bicycle',
+		about: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repudiandae itaque, voluptatum sed magnam quaerat beatae animi voluptate eligendi quo velit quisquam ex necessitatibus, quibusdam, sit ullam ipsum. Dolores, ad!",
+		video: '//www.youtube.com/embed/h5Wg6VN1K_U'
 	},
 	{
 		name: 'peter',
@@ -106,7 +114,9 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http', function ($scope,$
 		total_views: 543,
 		average_views: 933,
 		growth_rate: 56,
-		keywords: 'dog, usa, running'
+		keywords: 'dog, usa, running, crazy',
+		about: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repudiandae itaque, voluptatum sed magnam quaerat beatae animi voluptate eligendi quo velit quisquam ex necessitatibus, quibusdam, sit ullam ipsum. Dolores, ad!",
+		video: "//www.youtube.com/embed/h5Wg6VN1K_U"
 	}
 	// ,
 	// {
