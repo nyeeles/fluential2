@@ -86,10 +86,6 @@
   </div>
 
   <h1>BLEH</h1>
-  <div class="trend">
-  <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
-  </trend-line>
-  </div>
 
   <youtube code="uXqoqifwPkY"></youtube>
 
@@ -108,15 +104,39 @@
                 </div>
                 <div class="col-xs-7">
                   {{ profiles.about }}
+                  <p>Keywords: {{ profiles.keywords }}</p>
                 </div>
               </div>
             </div>
           
-            <span> Subscribers: {{ profiles.subscribers }}</span>
-            <span> Views: {{ profiles.total_views }}</span>
-            <span> Average views: {{ profiles.average_views }}</span>
-            <span> Growth rate: {{ profiles.growth_rate }}</span>
-            <span> Keywords: {{ profiles.keywords }}</span>
+            <div class="stats">
+              <div> Subscribers: {{ profiles.subscribers }}</div>
+              <div> Views: {{ profiles.total_views }}</div>
+              <div> Average views: {{ profiles.average_views }}</div>
+              <div> Growth rate: {{ profiles.growth_rate }}</div>
+            </div>
+
+            <div class="trend-container">
+              <div class="trend" ng-controller="TagsCtrl" >
+              <trend-line data="[{x:1,y:9},{x:2,y:"+{{ profiles.subscribers }}+"},{x:3,y:99}]">
+              </trend-line>
+              </div>
+
+              <div class="trend">
+              <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+              </trend-line>
+              </div>
+
+              <div class="trend">
+              <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+              </trend-line>
+              </div>
+
+              <div class="trend">
+              <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+              </trend-line>
+              </div>
+            </div>
         
         </div>
         <div class="modal-footer">
@@ -150,3 +170,4 @@
 	<script src="ui-utils.min.js"></script>
 </body>
 </html>
+

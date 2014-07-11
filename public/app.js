@@ -12,6 +12,7 @@ app.directive('youtube', function($sce) {
   return {
     restrict: 'EA',
     scope: { code:'=' },
+    controller: 'TagsCtrl',
     replace: true,
     template: '<div style="height:400px;"><iframe style="overflow:hidden;height:100%;width:100%" width="100%" height="100%" src="{{url}}" frameborder="0" allowfullscreen></iframe></div>',
     link: function (scope) {
@@ -194,7 +195,7 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window', function
   {
     name: 'zoella',
     thumbnail: 'zoella.jpg',
-    subscribers: 124357,
+    subscribers: 29,
     total_views: 124,
     average_views: 76,
     growth_rate: 327,
@@ -264,7 +265,7 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window', function
   {
     name: 'zoella',
     thumbnail: 'zoella.jpg',
-    subscribers: 1243577,
+    subscribers: 41,
     total_views: 1234,
     average_views: 576,
     growth_rate: 32,
