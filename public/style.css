@@ -9,6 +9,12 @@ img:hover{
 	cursor: pointer;
 }
 
+.trend-container, .stats{
+  display: -webkit-flex;
+  -webkit-justify-content: space-between;
+}
+
+
 .trend{
 	width: 50%;
 	height: 200px;
