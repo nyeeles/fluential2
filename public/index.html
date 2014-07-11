@@ -100,11 +100,14 @@
             <div class="container">
               <div class="row">
                 <div class="col-xs-4">
-                  <youtube code="uXqoqifwPkY"></youtube>
+   
+                
+                  <embed-video data-ng-href="https://youtu.be/{{profiles.video}}" controls=0></embed-video>
                 </div>
                 <div class="col-xs-7">
                   {{ profiles.about }}
                   <p>Keywords: {{ profiles.keywords }}</p>
+                  <p>Video: {{profiles.video}} </p>
                 </div>
               </div>
             </div>
@@ -118,7 +121,7 @@
 
             <div class="trend-container">
               <div class="trend" ng-controller="TagsCtrl" >
-              <trend-line data="[{x:1,y:9},{x:2,y:"+{{ profiles.subscribers }}+"},{x:3,y:99}]">
+              <trend-line data="[{x:1,y:9},{x:2,y:9},{x:3,y:99}]">
               </trend-line>
               </div>
 
@@ -164,7 +167,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-resource.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.js"></script>
 
-	<script src="app.js"></script>
+  <script src="app.js"></script>
+  <script src="https://rawgithub.com/erost/ng-videosharing-embed/master/build/ng-videosharing-embed.min.js"></script>
+
 	<script src="ui-bootstrap-tpls-0.11.0.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/2.0.1/ng-tags-input.min.js"></script>
 	<script src="ui-utils.min.js"></script>

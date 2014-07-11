@@ -1,31 +1,5 @@
-var app = angular.module("fluential",['ngTagsInput','ui.bootstrap']);
+var app = angular.module("fluential",['ngTagsInput','ui.bootstrap','videosharing-embed']);
 
-app.config(function($sceProvider) {
-  // Completely disable SCE.  For demonstration purposes only!
-  // Do not use in new projects.
-  $sceProvider.enabled(false);
-});
-
-
-
-app.directive('youtube', function($sce) {
-  return {
-    restrict: 'EA',
-    scope: { code:'=' },
-    controller: 'TagsCtrl',
-    replace: true,
-    template: '<div style="height:400px;"><iframe style="overflow:hidden;height:100%;width:100%" width="100%" height="100%" src="{{url}}" frameborder="0" allowfullscreen></iframe></div>',
-    link: function (scope) {
-        scope.$watch('code', function (newVal) {
-       		console.log('Hello')
-       		console.log(newVal)
-           if (newVal) {
-               scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal);
-           }
-        });
-    }
-  };
-});
 
 
 app.controller('FluentialCtrl', ['$scope', function ($scope) {
@@ -50,8 +24,6 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, profiles) {
     $modalInstance.dismiss('cancel');
   };
 }
-
-// app.controller('ModalInstanceCtrl',['$scope','$modalInstance','items', ModalInstanceCtrl]);
 
 
 app.directive("trendLine",function(){
@@ -86,7 +58,7 @@ app.directive("trendLine",function(){
 	    .attr("d", line) 
 	  	.attr("fill", "none")
 	    .attr("stroke", "#444444")
-	    .attr("stroke-width", "10px");
+	    .attr("stroke-width", "2px");
 
 
 
@@ -127,7 +99,7 @@ app.directive("trendLine",function(){
 
 
 
-app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window', function ($scope,$modal,$log,$http,$window) {
+app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter', function ($scope,$modal,$log,$http,$window,$filter) {
 
 	angular.element($window).on('resize',function(){
 		$scope.$apply()
@@ -163,7 +135,8 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window', function
       size: size,
       resolve: {
         profiles: function () {
-          return $scope.filteredProfiles[index];
+          $scope.filteredOrderedProfiles = $filter('orderBy')($scope.filteredProfiles,$scope.radioModel,'!reverse');
+          return $scope.filteredOrderedProfiles[index];
           
         }
       }
