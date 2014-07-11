@@ -57,6 +57,12 @@
       </tags-input>
         <p>Model: {{tags}}</p>
         <p ng-repeat="tag in tags">{{tag.text}}</p>
+        <pre>{{radioModel || 'null'}}</pre>
+    <div class="btn-group">
+        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'subscribers'">Subscribers</label>
+        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'total_views'">Views</label>
+        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'growth_rate'">Growth</label>
+    </div>
         
     </div>
   </div>
@@ -64,7 +70,7 @@
   <div class="row">
      <div class="col-md-12">
         <section>
-          <div ng-repeat="profile in (filteredProfiles | filter:search)" class="col-md-3">
+          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3">
             <h1>{{ profile.name }}</h1>
             <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{ profile.thumbnail }}" alt="{{ profile.name }}" />
             <p> Subscribers: {{ profile.subscribers }}</p>
@@ -79,6 +85,14 @@
 
   </div>
 
+  <h1>BLEH</h1>
+  <div class="trend">
+  <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+  </trend-line>
+  </div>
+
+  <youtube code="uXqoqifwPkY"></youtube>
+
 
 
   <script type="text/ng-template" id="myModalContent.html">
@@ -90,7 +104,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-xs-4">
-                  <iframe width="300" height="169" src="//www.youtube.com/embed/h5Wg6VN1K_U" frameborder="0" allowfullscreen></iframe>
+                  <youtube code="uXqoqifwPkY"></youtube>
                 </div>
                 <div class="col-xs-7">
                   {{ profiles.about }}
@@ -111,6 +125,8 @@
         </div>
     </div>  
   </script>
+
+  
 
 </div>
 

@@ -8,3 +8,8 @@ color: #fff;
 img:hover{
 	cursor: pointer;
 }
+
+.trend{
+	width: 50%;
+	height: 200px;
+}	
