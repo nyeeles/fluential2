@@ -107,7 +107,6 @@
 <!-- END SEARCH RESULTS -->
 
 
-
   <script type="text/ng-template" id="myModalContent.html">
     <div>
         <div class="modal-header">
@@ -118,12 +117,10 @@
               <div class="row">
                 <div class="col-xs-4">
   
-                  <embed-video data-ng-href="https://youtu.be/{{profiles.video}}" controls=0></embed-video>
+                  <embed-video data-ng-href="https://youtu.be/HG-WbtoAf2k" controls=0></embed-video>
                 </div>
                 <div class="col-xs-8">
-                  {{ profiles.about }}
-                  <p>Keywords: {{ profiles.keywords }}</p>
-                  <p>Video: {{profiles.video}} </p>
+                  {{ profiles.entry.content.$t }}
                 </div>
               </div>
             </div>
@@ -134,28 +131,30 @@
               <div> Average views: {{ profiles.average_views }}</div>
               <div> Growth rate: {{ profiles.growth_rate }}</div>
             </div>
+          
 
             <div class="trend-container">
-              <div class="trend" ng-controller="TagsCtrl" >
-              <trend-line data="[{x:10,y:19},{x:20,y:29},{x:53,y:99}]">
+              <div class="trend">
+              <trend-line data="[{x:10,y:50},{x:20,y:70},{x:30,y:30},{x:40,y:50},{x:50,y:30},{x:60,y:40},{x:50,y:30},{x:60,y:40}]">
               </trend-line>
               </div>
 
               <div class="trend">
-              <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
               </trend-line>
               </div>
 
               <div class="trend">
-              <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
               </trend-line>
               </div>
 
               <div class="trend">
-              <trend-line data="[{x:10,y:23},{x:30,y:41},{x:60,y:99}]">
+              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
               </trend-line>
               </div>
             </div>
+
         
         </div>
         <div class="modal-footer">
