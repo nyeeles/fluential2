@@ -1,9 +1,7 @@
 /* MIX */
 ul.tag-list .tag-item {
-background: #428bca;
-border: 1px solid #357ebd;
-border-radius: 4px;
-color: #fff;
+background: #ff6a6b;
+color: white;
 }
 
 img {
@@ -27,6 +25,7 @@ img:hover{
 	height: 100px;
 }
 /* --- BODY PROPERTIES --- */
+
 
 body {
 	background-color: #EBEBEB;
@@ -57,14 +56,14 @@ h1 {
 
 /* --- HEADER --- */
 .navbar {
-	/*background-color: blue;*/
 	margin-bottom: 0;
 }
 
 .navbar-default {
-	/*background-color: red;*/
 	display: flex;
 	justify-content: center;
+	background-color: transparent;
+	border: none;
 }
 
 .navbar-collapse {
@@ -91,14 +90,14 @@ h1 {
 .influencer-nav {
 	/*background-color: grey;*/
 	color: #454545;
-	border-bottom: solid salmon;
+	border-bottom: solid #ff6a6b;
 	margin-left: 100px;
 }
 
 .brand-nav {
 	/*background-color: grey;*/
 	color: #454545;
-	border-bottom: solid turquoise;
+	border-bottom: solid #17c4ca;
 	margin-right: 100px;
 }
 /* end influencer and brand menu */
@@ -117,7 +116,36 @@ h1 {
 
 /* --- END HEADER --- */
 
+
+/* --- SEARCH BAR --- */
+
+.host {
+	background-color: white;
+	height: 200px;
+	padding: 10px;
+}
+
+::-webkit-input-placeholder {
+	font-weight: lighter;
+}
+
+.search-bar {
+	background-color: white;
+}
+
+.fa-search {
+  color: #303030;
+  position: relative;
+  top: 60px;
+}
+
+.fa-search:hover {
+	cursor: pointer;
+}
+/**/
+
 /* -- SEARCH RESULTS -- */
+
 
 .container {
 	/*background-color: blue;*/
@@ -131,6 +159,11 @@ h1 {
 	border-top: solid turquoise;
 	border-bottom: 2px solid turquoise;
 	padding: 0;
+}
+
+.btn-group {
+	margin-left: 42%;
+	margin-top: 20px;
 }
 
 .box h1 {
