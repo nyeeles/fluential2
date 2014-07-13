@@ -1,5 +1,6 @@
 /* --- BODY PROPERTIES --- */
 
+
 body {
 	background-color: #EBEBEB;
 	font-family: 'Open Sans', sans-serif;
@@ -60,14 +61,14 @@ p {
 .influencer-nav {
 	/*background-color: grey;*/
 	color: #454545;
-	border-bottom: solid salmon;
+	border-bottom: solid #ff6a6b;
 	margin-left: 100px;
 }
 
 .brand-nav {
 	/*background-color: grey;*/
 	color: #454545;
-	border-bottom: solid turquoise;
+	border-bottom: solid #17c4ca;
 	margin-right: 100px;
 }
 /* end influencer and brand menu */
@@ -86,15 +87,31 @@ p {
 
 /* --- END HEADER --- */
 
-tags-input .tags {
-	border: 0;
-	outline: none;
-	-webkit-appearance: none;
-	box-shadow: none;
-	height: 150px;
+/* --- SEARCH BAR --- */
+
+.host {
+	background-color: white;
+	height: 200px;
+	padding: 10px;
 }
 
+::-webkit-input-placeholder {
+	font-weight: lighter;
+}
 
+.search-bar {
+	background-color: white;
+}
+
+.fa-search {
+  color: #303030;
+  position: relative;
+  top: 60px;
+}
+
+.fa-search:hover {
+	cursor: pointer;
+}
 /**/
 
 /**/
@@ -102,10 +119,8 @@ tags-input .tags {
 
 /* MIX */
 ul.tag-list .tag-item {
-background: #428bca;
-border: 1px solid #357ebd;
-border-radius: 4px;
-color: #fff;
+background: #ff6a6b;
+color: white;
 }
 
 img:hover{
