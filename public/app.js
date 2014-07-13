@@ -97,13 +97,127 @@ app.directive("trendLine",function(){
 });
 
 
+// theApp.factory('mainInfo', function($http) { 
+
+//     var obj = {content:null};
+
+//     $http.get('content.json').success(function(data) {
+//         // you can do some processing here
+//         obj.content = data;
+//     });    
+
+//     return obj;    
+// });
+
+
+// $scope.foo = "Hello World";
+// mainInfo.success(function(data) { 
+//     $scope.foo = "Hello "+data.contentItem[0].username;
+// });
+
+
+
+
+// app.factory("youtubeData",['$http',function($http){
+
+
+//   return {
+
+//     influencers: ["PewDiePie", "YouTube", "movies", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"],
+
+//     top50Influencers: function(influencers){
+//       return influencers.map(function(influencer){
+//          "http://gdata.youtube.com/feeds/api/users/"+ influencer +"/uploads?alt=json&max-results=10";
+         
+//       })
+//     },
+    
+//     top10Videos: function(){
+//       influencers.map(function(influencer){
+//         return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"?alt=json";     
+//       })
+//     }
+
+//     };
+
+// }]);
+
+
 
 
 app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter', function ($scope,$modal,$log,$http,$window,$filter) {
 
 	angular.element($window).on('resize',function(){
 		$scope.$apply()
-	})
+	});
+
+  // console.log(youtubeData.influencers);
+  // console.log(youtubeData.top10Videos());
+  // console.log(youtubeData.top50Influencers());
+
+
+
+  var top10;
+  var top10Videos;
+  var top50Influencers;
+
+
+
+
+
+
+
+  $scope.influencers = ["PewDiePie", "YouTube", "movies", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
+
+    $scope.top10Videos = $scope.influencers.map(function(influencer){
+      return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"/uploads?alt=json&max-results=10";
+    });
+
+    $scope.top50Influencers = $scope.influencers.map(function(influencer){
+      return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"?alt=json";     
+    })
+
+      // $http.get("http://gdata.youtube.com/feeds/api/users/PewDiePie/uploads?alt=json&max-results=10")
+      // .success(function(data,status,headers,config){
+      //   // console.log(data);
+      // });
+
+      // console.log($scope.influencers);  
+      // console.log($scope.top10Videos);
+      // console.log($scope.top50Influencers);
+
+      // $scope.top50Influencers.map(function(influencer){
+      //   $http.get(influencer)
+      //   .success(function(data){
+
+      //  });
+      // })
+
+
+
+      // $scope.top10Videos.map(function(video){
+      //   $http.get(video)
+      //   .success(function(data){
+      //     // console.log(data);
+      //     $scope.videoData = data;
+      //  });
+      // })
+
+
+
+
+
+
+
+
+    // $scope.top50Influencers.map(function(top50Influencer){
+    //   $http.jsonp(top50Influencer)
+    //   .success(data, status, headers, config){
+    //     $scope.top50Data = data;
+    //   };
+    // });
+  
+
 
 
 	$scope.radioModel = 'subscribers';
@@ -306,5 +420,18 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 	$scope.filteredProfiles = $scope.profiles;
 	
 }]);
+
+
+var data = [1,2,3,4,5,6,6];
+
+w = 400;
+h = 400;
+margin = 20,
+y = d3.scale.linear().domain([0, d3.max(data)]).range([0 + margin, h - margin]);
+
+x = d3.scale.linear().domain([0, data.length]).range([0 + margin, w - margin])
+
+
+
 
 
