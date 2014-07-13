@@ -10,8 +10,6 @@
   <!-- maggie -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="jumbotron.css" rel="stylesheet">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- /maggie -->
 
 	<title>Fluential</title>
@@ -70,7 +68,6 @@
   </div> -->
 
 
-
   <div class="row">
     <div class="col-md-12">
       <tags-input name="tags" class="tagz" ng-model="tags" on-tag-added='filterProfiles()' on-tag-removed='filterProfiles()'>
@@ -88,25 +85,26 @@
     </div>
   </div>
 
+<!-- SEARCH RESULTS -->
+<div class="container">
   <div class="row">
      <div class="col-md-12">
         <section>
-          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3">
-            <h1>{{profile.entry.title.$t}}</h1>
-            <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{profile.entry.media$thumbnail.url}}" alt="Something" />
-<!--             <p> Subscribers: {{ profile.subscribers }}</p>
-            <p> Views: {{ profile.total_views }}</p>
-            <p> Average_views: {{ profile.average_views }}</p>
-            <p> Growth rate: {{ profile.growth_rate }}</p>
-            <p> Keywords: {{ profile.keywords }}</p> -->
-
+          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3 box-container">
+            <div class="box">
+              <img ng-click="open('lg',$index)" src="{{profile.entry.media$thumbnail.url}}" alt="Something"/>
+              <h1>{{profile.entry.title.$t}}</h1>
+              <p><span class="views-number">8,444,555</span> <span class="views-text">views/vid</span></p>
+              <p>American violinist, dancer, performance, artist and composer</p>
+            </div>
           </div>
         </section>
      </div> 
 
   </div>
+</div>
 
-  <h1>BLEH</h1>
+<!-- END SEARCH RESULTS -->
 
   <youtube code="uXqoqifwPkY"></youtube>
 
