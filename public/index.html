@@ -119,7 +119,7 @@
               <div class="row">
                 <div class="col-xs-4">
   
-                  <embed-video data-ng-href="https://youtu.be/{{profiles.video}}" controls=0></embed-video>
+                  <embed-video data-ng-href="{{profiles.entry.0.media$group.media$content.0.url}}" controls=0></embed-video>
                 </div>
                 <div class="col-xs-8">
                   {{ profiles.about }}
