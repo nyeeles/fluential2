@@ -1,3 +1,97 @@
+/* --- BODY PROPERTIES --- */
+
+body {
+	background-color: #EBEBEB;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;
+	color: #919191;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: #919191;
+}
+
+a:visited{
+	color: #919191;
+}
+
+p {
+	padding: 10px;
+	line-height: 1.5em;
+}
+
+/* --- END BODY PROPERTIES --- */
+
+/* --- HEADER --- */
+.navbar {
+	/*background-color: blue;*/
+	margin-bottom: 0;
+}
+
+.navbar-default {
+	/*background-color: red;*/
+	display: flex;
+	justify-content: center;
+}
+
+.navbar-collapse {
+	/*background-color: green;*/
+}
+
+.nav {
+	/*background-color: yellow;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* logo */
+.navbar-brand {
+	/*background-color: lightblue;*/
+	content: url(images/fluential_logo_transparent.png);
+	width: 25%;
+	height: 25%;
+
+}
+
+/* influencer and brand menu */
+.influencer-nav {
+	/*background-color: grey;*/
+	color: #454545;
+	border-bottom: solid salmon;
+	margin-left: 100px;
+}
+
+.brand-nav {
+	/*background-color: grey;*/
+	color: #454545;
+	border-bottom: solid turquoise;
+	margin-right: 100px;
+}
+/* end influencer and brand menu */
+
+.menu-nav {
+	font-variant: small-caps;
+	font-size: 1.25em;
+}
+
+/* PSEUDO ELEMENTS */
+
+.navicon::after  {
+	content: "☰";
+	margin: 0 5px;
+}
+
+/* --- END HEADER --- */
+
+/**/
+
+/**/
+
+
+/* MIX */
 ul.tag-list .tag-item {
 background: #428bca;
 border: 1px solid #357ebd;
@@ -14,8 +108,7 @@ img:hover{
   -webkit-justify-content: space-between;
 }
 
-
 .trend{
 	width: 100px;
 	height: 100px;
-}	
+}
