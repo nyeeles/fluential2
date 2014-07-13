@@ -87,16 +87,63 @@
       </div>
   </div>
 
+  <script type="text/ng-template" id="myModalContent.html">
+    <div>
+        <div class="modal-header">
+            <h3 class="modal-title">{{profiles.entry.title.$t}}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-4">
   
+                  <embed-video data-ng-href="https://youtu.be/HG-WbtoAf2k" controls=0></embed-video>
+                </div>
+                <div class="col-xs-8">
+                  {{ profiles.entry.content.$t }}
+                </div>
+              </div>
+            </div>
+          
+            <div class="stats">
+              <div> Subscribers: {{ profiles.entry.yt$statistics.subscriberCount }}</div>
+              <div> Views: {{ profiles.entry.yt$statistics.totalUploadViews }}</div>
+              <div> Average views: {{ profiles.average_views }}</div>
+              <div> Growth rate: {{ profiles.growth_rate }}</div>
+            </div>
+          
+            <div class="trend-container">
+              <div class="trend">
+              <trend-line data="[{x:10,y:50},{x:20,y:70},{x:30,y:30},{x:40,y:50},{x:50,y:30},{x:60,y:40}]">
+              </trend-line>
+              </div>
+
+              <div class="trend">
+              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
+              </trend-line>
+              </div>
+
+              <div class="trend">
+              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
+              </trend-line>
+              </div>
+
+              <div class="trend">
+              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
+              </trend-line>
+              </div>
+            </div>
+
+        
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>  
+  </script> 
 
 </div>
-
-
-
-
-
-
-
 
 
 	<script src="http://d3js.org/d3.v3.min.js"></script>
