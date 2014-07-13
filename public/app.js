@@ -38,15 +38,6 @@ app.directive("trendLine",function(){
 		console.log(height);
 		var min = Math.min(width, height);
 
-    // var x = d3.scale.linear()
-    //   .domain([d3.extent(data, function(d) { return d.x; })])
-    //   .range( [0, width]);
-
-    // var y = d3.scale.linear()
-    //   .domain([d3.extent(data, function(d) { return d.y; })])
-    //   .range( [height, 0]);
-
-
     var line = d3.svg.line() 
       .x(function(d) { return d.x })
       .y(function(d) { return d.y });
@@ -118,8 +109,8 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 
   // $scope.influencersData['videos'] = $scope.videosData.feed.entry
   // $scope.allData =
-  $scope.influencers = ["PewDiePie", "YouTube"];
-  // $scope.influencers = ["PewDiePie", "YouTube", "movies", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
+
+  $scope.influencers = ["PewDiePie", "YouTube", "movies", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
 
     $scope.top10Videos = $scope.influencers.map(function(influencer){
       return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"/uploads?alt=json&max-results=10";
@@ -129,54 +120,29 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
       return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"?alt=json";     
     })
 
-      $q.all([some50Influencers(),some10Videos()]).then(function(results) {
-        // results[0] == result of doTask1
-        // results[1] == result of doTask2
-        console.log(results[0]);
-        console.log(results[1]);
-        console.log($scope.videosData);
-        console.log($scope.influencersData);
-        //   $scope.allData = $scope.top50Influencers.map(function(influencer){
-        //   // influencer['videos'] = $scope.videosData.feed.entry;
-        //   $scope.top10Videos.map(function(video){
-        //     influencer['videos'] = video;
-        //   })
-        // })
-      });
 
-      function some50Influencers(){
-          $scope.top50Influencers.map(function(influencer){
-            var defer = $q.defer();
+    $scope.top50Influencers.map(function(influencer){
+
           $http.get(influencer)
           .success(function(data){
-            defer.resolve();
+
             return $scope.influencersData.push(data);
          });
-          return defer.promise;
+
         })
-      }
+
   
-      function some10Videos (){
-          $scope.top10Videos.map(function(video){
-            var defer = $q.defer();
+
+    $scope.top10Videos.map(function(video){
+
           $http.get(video)
           .success(function(data){
-            defer.resolve();
+
             return $scope.videosData.push(data);
          });
-          return defer.promise;
+          
         })
-      }
 
-      // console.log($scope.allData);
-
-
-    // $scope.allData = $scope.top50Influencers.map(function(influencer){
-    //   // influencer['videos'] = $scope.videosData.feed.entry;
-    //   $scope.top10Videos.map(function(video){
-    //     influencer['videos'] = video.feed.entry;
-    //   })
-    // })
 
    
 

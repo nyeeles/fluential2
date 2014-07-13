@@ -94,11 +94,11 @@
           <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3">
             <h1>{{profile.entry.title.$t}}</h1>
             <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{profile.entry.media$thumbnail.url}}" alt="Something" />
-<!--             <p> Subscribers: {{ profile.subscribers }}</p>
+            <p> Subscribers: {{ profile.subscribers }}</p>
             <p> Views: {{ profile.total_views }}</p>
             <p> Average_views: {{ profile.average_views }}</p>
             <p> Growth rate: {{ profile.growth_rate }}</p>
-            <p> Keywords: {{ profile.keywords }}</p> -->
+            <p> Keywords: {{ profile.keywords }}</p>
 
           </div>
         </section>
@@ -137,9 +137,10 @@
               <div> Growth rate: {{ profiles.growth_rate }}</div>
             </div>
           
+
             <div class="trend-container">
               <div class="trend">
-              <trend-line data="[{x:10,y:50},{x:20,y:70},{x:30,y:30},{x:40,y:50},{x:50,y:30},{x:60,y:40}]">
+              <trend-line data="[{x:10,y:50},{x:20,y:70},{x:30,y:30},{x:40,y:50},{x:50,y:30},{x:60,y:40},{x:50,y:30},{x:60,y:40}]">
               </trend-line>
               </div>
 
