@@ -50,6 +50,15 @@
 </div>
 
 <div ng-controller="TagsCtrl">
+
+  <!-- <div ng-repeat="influencer in influencersData">
+    {{influencer.entry.yt$username.$t}}
+  </div> -->
+
+<!--   <div ng-repeat="video in videosData">
+    {{video.feed.entry.0.yt$statistics.viewCount}}
+  </div> -->
+
   <div class="row">
     <div class="col-md-12">
       <tags-input name="tags" class="tagz" ng-model="tags" on-tag-added='filterProfiles()' on-tag-removed='filterProfiles()'>
