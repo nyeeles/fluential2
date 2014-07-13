@@ -26,14 +26,14 @@ p {
 
 /* --- HEADER --- */
 .navbar {
-	/*background-color: blue;*/
 	margin-bottom: 0;
 }
 
 .navbar-default {
-	/*background-color: red;*/
 	display: flex;
 	justify-content: center;
+	background-color: transparent;
+	border: none;
 }
 
 .navbar-collapse {
@@ -85,6 +85,15 @@ p {
 }
 
 /* --- END HEADER --- */
+
+tags-input .tags {
+	border: 0;
+	outline: none;
+	-webkit-appearance: none;
+	box-shadow: none;
+	height: 150px;
+}
+
 
 /**/
 
