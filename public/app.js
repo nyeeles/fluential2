@@ -38,18 +38,25 @@ app.directive("trendLine",function(){
 		console.log(height);
 		var min = Math.min(width, height);
 
+    // var x = d3.scale.linear()
+    //   .domain([d3.extent(data, function(d) { return d.x; })])
+    //   .range( [0, width]);
 
-	  var line = d3.svg.line() 
-	    .x(function(d) { return d.x })
-	    .y(function(d) { return d.y });
-
-		var svg = d3.select(el).append('svg')
-		.attr("width",width)
-		.attr("height",height);
-
+    // var y = d3.scale.linear()
+    //   .domain([d3.extent(data, function(d) { return d.y; })])
+    //   .range( [height, 0]);
 
 
-		var g = svg.append("g");
+    var line = d3.svg.line() 
+      .x(function(d) { return d.x })
+      .y(function(d) { return d.y });
+
+    var svg = d3.select(el).append('svg')
+    .attr("width",width)
+    .attr("height",height);
+
+    var g = svg.append("g");
+
 
 		var lines = g.selectAll("path")
 	    .data([data]) 
@@ -96,20 +103,23 @@ app.directive("trendLine",function(){
 
 });
 
-app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter', function ($scope,$modal,$log,$http,$window,$filter) {
+app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter','$q', function ($scope,$modal,$log,$http,$window,$filter,$q) {
 
 	angular.element($window).on('resize',function(){
 		$scope.$apply()
 	});
 
-  var top10;
+
   var top10Videos;
   var top50Influencers;
 
   $scope.influencersData = [];
   $scope.videosData = [];
 
-  $scope.influencers = ["PewDiePie", "YouTube", "movies", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
+  // $scope.influencersData['videos'] = $scope.videosData.feed.entry
+  // $scope.allData =
+  $scope.influencers = ["PewDiePie", "YouTube"];
+  // $scope.influencers = ["PewDiePie", "YouTube", "movies", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
 
     $scope.top10Videos = $scope.influencers.map(function(influencer){
       return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"/uploads?alt=json&max-results=10";
@@ -119,24 +129,56 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
       return "http://gdata.youtube.com/feeds/api/users/"+ influencer +"?alt=json";     
     })
 
-      $scope.top50Influencers.map(function(influencer){
-        $http.get(influencer)
-        .success(function(data){
-          $scope.influencersData.push(data);
-       });
+      $q.all([some50Influencers(),some10Videos()]).then(function(results) {
+        // results[0] == result of doTask1
+        // results[1] == result of doTask2
+        console.log(results[0]);
+        console.log(results[1]);
+        console.log($scope.videosData);
+        console.log($scope.influencersData);
+        //   $scope.allData = $scope.top50Influencers.map(function(influencer){
+        //   // influencer['videos'] = $scope.videosData.feed.entry;
+        //   $scope.top10Videos.map(function(video){
+        //     influencer['videos'] = video;
+        //   })
+        // })
+      });
 
-      })
+      function some50Influencers(){
+          $scope.top50Influencers.map(function(influencer){
+            var defer = $q.defer();
+          $http.get(influencer)
+          .success(function(data){
+            defer.resolve();
+            return $scope.influencersData.push(data);
+         });
+          return defer.promise;
+        })
+      }
   
-      $scope.top10Videos.map(function(video){
-        $http.get(video)
-        .success(function(data){
-          $scope.videosData.push(data);
+      function some10Videos (){
+          $scope.top10Videos.map(function(video){
+            var defer = $q.defer();
+          $http.get(video)
+          .success(function(data){
+            defer.resolve();
+            return $scope.videosData.push(data);
+         });
+          return defer.promise;
+        })
+      }
 
-       });
-
-      })
+      // console.log($scope.allData);
 
 
+    // $scope.allData = $scope.top50Influencers.map(function(influencer){
+    //   // influencer['videos'] = $scope.videosData.feed.entry;
+    //   $scope.top10Videos.map(function(video){
+    //     influencer['videos'] = video.feed.entry;
+    //   })
+    // })
+
+   
 
 	$scope.radioModel = 'subscribers';
 
