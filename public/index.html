@@ -59,6 +59,15 @@
     {{video.feed.entry.0.yt$statistics.viewCount}}
   </div> -->
 
+
+
+<!--   <div ng-repeat="influencer in influencersData">
+    {{influencer.entry.category.1.term}}
+    {{influencer.entry.title.$t}}
+  </div> -->
+
+
+
   <div class="row">
     <div class="col-md-12">
       <tags-input name="tags" class="tagz" ng-model="tags" on-tag-added='filterProfiles()' on-tag-removed='filterProfiles()'>
@@ -79,14 +88,14 @@
   <div class="row">
      <div class="col-md-12">
         <section>
-          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse | filter:search)" class="col-md-3">
-            <h1>{{ profile.name }}</h1>
-            <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{ profile.thumbnail }}" alt="{{ profile.name }}" />
-            <p> Subscribers: {{ profile.subscribers }}</p>
+          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3">
+            <h1>{{profile.entry.title.$t}}</h1>
+            <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{profile.entry.media$thumbnail.url}}" alt="Something" />
+<!--             <p> Subscribers: {{ profile.subscribers }}</p>
             <p> Views: {{ profile.total_views }}</p>
             <p> Average_views: {{ profile.average_views }}</p>
             <p> Growth rate: {{ profile.growth_rate }}</p>
-            <p> Keywords: {{ profile.keywords }}</p>
+            <p> Keywords: {{ profile.keywords }}</p> -->
 
           </div>
         </section>
@@ -103,7 +112,7 @@
   <script type="text/ng-template" id="myModalContent.html">
     <div>
         <div class="modal-header">
-            <h3 class="modal-title">{{profiles.name}}</h3>
+            <h3 class="modal-title">{{profiles.entry.title.$t}}</h3>
         </div>
         <div class="modal-body">
             <div class="container">
@@ -121,15 +130,15 @@
             </div>
           
             <div class="stats">
-              <div> Subscribers: {{ profiles.subscribers }}</div>
-              <div> Views: {{ profiles.total_views }}</div>
+              <div> Subscribers: {{ profiles.entry.yt$statistics.subscriberCount }}</div>
+              <div> Views: {{ profiles.entry.yt$statistics.totalUploadViews }}</div>
               <div> Average views: {{ profiles.average_views }}</div>
               <div> Growth rate: {{ profiles.growth_rate }}</div>
             </div>
 
             <div class="trend-container">
               <div class="trend" ng-controller="TagsCtrl" >
-              <trend-line data="[{x:1,y:9},{x:2,y:9},{x:3,y:99}]">
+              <trend-line data="[{x:10,y:19},{x:20,y:29},{x:53,y:99}]">
               </trend-line>
               </div>
 
