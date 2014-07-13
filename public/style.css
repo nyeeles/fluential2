@@ -123,6 +123,11 @@ background: #ff6a6b;
 color: white;
 }
 
+.btn-group {
+	margin-left: 42%;
+	margin-top: 20px;
+}
+
 img:hover{
 	cursor: pointer;
 }
