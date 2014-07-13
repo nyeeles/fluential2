@@ -87,24 +87,24 @@
       </div>
   </div>
 
+  <!-- SEARCH RESULTS -->
+<div class="container">
   <div class="row">
      <div class="col-md-12">
         <section>
-          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3">
-            <h1>{{profile.entry.title.$t}}</h1>
-            <img ng-click="open('lg',$index)" style="width: 120px; height: 120px;" src="{{profile.entry.media$thumbnail.url}}" alt="Something" />
-            <p> Subscribers: {{ profile.subscribers }}</p>
-            <p> Views: {{ profile.total_views }}</p>
-            <p> Average_views: {{ profile.average_views }}</p>
-            <p> Growth rate: {{ profile.growth_rate }}</p>
-            <p> Keywords: {{ profile.keywords }}</p>
-
+          <div ng-repeat="profile in (filteredProfiles | orderBy:radioModel:!reverse)" class="col-md-3 box-container">
+            <div class="box">
+              <img ng-click="open('lg',$index)" src="{{profile.entry.media$thumbnail.url}}" alt="Something"/>
+              <h1>{{profile.entry.title.$t}}</h1>
+              <p><span class="views-number">8,444,555</span> <span class="views-text">views/vid</span></p>
+              <p>American violinist, dancer, performance, artist and composer</p>
+            </div>
           </div>
         </section>
      </div> 
 
   </div>
-
+</div>
 
   <script type="text/ng-template" id="myModalContent.html">
     <div>
