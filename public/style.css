@@ -207,7 +207,8 @@ h1 {
 /* - - - MODAL - - - */
 
 .modal-container {
-	height: 500px;
+	min-height: 500px;
+	padding-bottom: 20px;
 }
 
 .modal-header {
