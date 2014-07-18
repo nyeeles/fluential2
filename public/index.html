@@ -93,8 +93,8 @@
             <div class="box">
               <img ng-click="open('lg',influencer.username)" src="{{influencer.videos.0.media$group.media$thumbnail.0.url}}" alt="Something"/>
               <h1>{{influencer.profile.title.$t}}</h1>
-              <!-- <h2>{{influencer.username}}</h2> -->
-              <p><span class="views-number">{{influencer.avg}}</span> <span class="views-text">{{ ((parseInt(influencer.videos.0.yt$statistics.viewCount) + parseInt(influencer.videos.1.yt$statistics.viewCount)) / 2) | number:0 }} views/vid</span></p>
+              
+              <p><span class="views-text">{{ ((parseInt(influencer.videos.0.yt$statistics.viewCount) + parseInt(influencer.videos.1.yt$statistics.viewCount)) / 2) | number:0 }} views/vid</span></p>
               <p>American violinist, dancer, performance, artist and composer</p>
             </div>
           </div>
@@ -114,7 +114,8 @@
               <div class="row">
                 <div class="col-xs-4">
   
-                  <embed-video data-ng-href={{"https://youtu.be/" + influencers.videos.0.yt$statistics.viewCount.match(/v\/(.*)\?/) }} controls=0></embed-video>
+                  <embed-video data-ng-href="https://youtu.be/{{ influencers.code}}" controls=0></embed-video>
+
                 </div>
                 <div class="col-xs-8">
                   {{ influencers.profile.content.$t }}
@@ -123,14 +124,13 @@
             </div>
           
             <div class="stats">
-              <div> Subscribers: {{ profiles.yt$statistics.subscriberCount }}</div>
-              <div> Views: {{ profiles.yt$statistics.totalUploadViews }}</div>
-              <div> Average views: {{ profiles.average_views }}</div>
-              <div> Growth rate: {{ profiles.growth_rate }}</div>
+              <div> Subscribers: {{ influencers.profile.yt$statistics.subscriberCount }}</div>
+              <div> Views: {{ influencers.profile.yt$statistics.totalUploadViews }}</div>
+              <div> Growth rate: 5%</div>
             </div>
           
 
-            <div class="trend-container">
+            <!-- <div class="trend-container">
               <div class="trend">
               <trend-line data="[{x:10,y:50},{x:20,y:70},{x:30,y:30},{x:40,y:50},{x:50,y:30},{x:60,y:40},{x:50,y:30},{x:60,y:40}]">
               </trend-line>
@@ -150,7 +150,7 @@
               <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
               </trend-line>
               </div>
-            </div>
+            </div> -->
 
         
         </div>

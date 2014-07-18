@@ -121,12 +121,9 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
             $http.get("http://gdata.youtube.com/feeds/api/users/"+ influencer +"/uploads?alt=json&max-results=10")
               .success(function(videoData){
 
-                // console.log(videoData.feed.entry.0.yt$statistics.viewCount);
-                // console.log(videoData.feed.entry.1.yt$statistics.viewCount);
-                // console.log(videoData.feed.entry.2.yt$statistics.viewCount);
+                var code = videoData.feed.entry[0].media$group.media$content[0].url.match(/v\/(.*)\?/)[1]
 
-                
-                $scope.influencersData[influencer] = { profile: profileData, videos: videoData.feed.entry, username: influencer  };
+                $scope.influencersData[influencer] = { profile: profileData, videos: videoData.feed.entry, username: influencer, code: code };
 
               });
 
