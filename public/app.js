@@ -6,6 +6,21 @@ app.controller('FluentialCtrl', ['$scope', function ($scope) {
 
 }]);
 
+// need to convert hash to array for radiobuttons to work
+app.filter('toArray', function () {
+  'use strict';
+
+  return function (obj) {
+      if (!(obj instanceof Object)) {
+          return obj;
+      }
+
+      return Object.keys(obj).map(function (key) {
+          return Object.defineProperty(obj[key], '$key', {__proto__: null, value: key});
+      });
+  }
+});
+
 var ModalInstanceCtrl = function ($scope, $modalInstance, influencers) {
 
   $scope.influencers = influencers;
@@ -13,10 +28,9 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, influencers) {
     influencer: $scope.influencers.first
   };
 
-  console.log($scope.selected);
+  // console.log($scope.selected);
 
   $scope.ok = function () {
-  	console.log('Yo')
     $modalInstance.close($scope.selected.profile);
   };
 
@@ -103,11 +117,11 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 
   $scope.influencersData = {};
 
-  $scope.influencers = ["PewDiePie", "holasoygerman", "smosh"]
+  $scope.influencers = ["PewDiePie", "holasoygerman", "smosh", "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos"]
 
-  // , "RihannaVEVO", "onedirectionvevo", "JennaMarbles", "KatyPerryVEVO", "eminemVEVO", "nigahiga", "youtubeshowsus", "machinima", "RayWilliamJohnson", "ERB", "SkyDoesMinecraft", "JustinBieberVEVO", "TheEllenShow", "TheFineBros", "portadosfundos", "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
+  //, "werevertumorro", "TheOfficialSkrillex", "TaylorSwiftVEVO", "vanossgaming", "CaptainSparklez", "TheSyndicateProject", "elrubiusomg", "vsauce", "collegehumor", "officialpsy", "lady16makeup", "freddiew", "VEVO", "mileycyrusvevo", "vitalyzdtv", "speedyw03", "ShaneDawsonTV", "RoosterTeeth", "ElektraRecords", "BlueXephos", "TobyGames", "MichellePhan", "Macbarbie07", "EpicMealtime", "enchufetv", "ksiolajidebt", "vegetta777", "RiotGamesInc", "SpinninRec", "Tobuscus"];
 
-
+    
 
     $scope.influencers.map(function(influencer){
 
@@ -116,12 +130,28 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 
             var profileData = data.entry;
 
+            var subscribers = profileData.yt$statistics.subscriberCount;
+
+            var views = profileData.yt$statistics.totalUploadViews;
+
+
             $http.get("http://gdata.youtube.com/feeds/api/users/"+ influencer +"/uploads?alt=json&max-results=10")
               .success(function(videoData){
 
                 var code = videoData.feed.entry[0].media$group.media$content[0].url.match(/v\/(.*)\?/)[1]
+                
+                var averageViewsArray = [];
 
-                $scope.influencersData[influencer] = { profile: profileData, videos: videoData.feed.entry, username: influencer, code: code };
+                videoData.feed.entry.map(function(entry){
+                  
+                  averageViewsArray.push(entry.yt$statistics.viewCount);
+          
+                })
+
+                
+                var averageViews = d3.mean(averageViewsArray.map(Number));
+
+                $scope.influencersData[influencer] = { profile: profileData, videos: videoData.feed.entry, username: influencer, code: code, subscribers: subscribers, views: views, averageViews: averageViews};
 
               });
 
