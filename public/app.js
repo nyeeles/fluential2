@@ -40,73 +40,73 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, influencers) {
 }
 
 
-app.directive("trendLine",function(){
+// app.directive("trendLine",function(){
 
-	function link(scope,el,attrs){
-		var data = scope.data;
-		var color = d3.scale.category10();
-		var el = el[0];
-		var width = el.parentNode.clientWidth;
-		console.log(width);
-		var height = el.parentNode.clientHeight;
-		console.log(height);
-		var min = Math.min(width, height);
+// 	function link(scope,el,attrs){
+// 		var data = scope.data;
+// 		var color = d3.scale.category10();
+// 		var el = el[0];
+// 		var width = el.parentNode.clientWidth;
+// 		// console.log(width);
+// 		var height = el.parentNode.clientHeight;
+// 		// console.log(height);
+// 		var min = Math.min(width, height);
 
-    var line = d3.svg.line() 
-      .x(function(d) { return d.x })
-      .y(function(d) { return d.y });
+//     var line = d3.svg.line() 
+//       .x(function(d) { return d.x })
+//       .y(function(d) { return d.y });
 
-    var svg = d3.select(el).append('svg')
-    .attr("width",width)
-    .attr("height",height);
+//     var svg = d3.select(el).append('svg')
+//     .attr("width",width)
+//     .attr("height",height);
 
-    var g = svg.append("g");
-
-
-		var lines = g.selectAll("path")
-	    .data([data]) 
-	    .enter()
-	    .append("path") 
-	    .attr("d", line) 
-	  	.attr("fill", "none")
-	    .attr("stroke", "#444444")
-	    .attr("stroke-width", "2px");
+//     var g = svg.append("g");
 
 
+// 		var lines = g.selectAll("path")
+// 	    .data([data]) 
+// 	    .enter()
+// 	    .append("path") 
+// 	    .attr("d", line) 
+// 	  	.attr("fill", "none")
+// 	    .attr("stroke", "#444444")
+// 	    .attr("stroke-width", "2px");
 
-   scope.$watch(function(){
-				return el.parentNode.clientWidth * el.parentNode.clientHeight;
-			}, function(){
 
-				width = el.parentNode.clientWidth;
-				height = el.parentNode.clientHeight;
 
-				// if(width != svg.attr('width')) {
-					svg.attr({width: width, height: height});
-				// }
+//    scope.$watch(function(){
+// 				return el.parentNode.clientWidth * el.parentNode.clientHeight;
+// 			}, function(){
 
-				min = Math.min(width, height);
+// 				width = el.parentNode.clientWidth;
+// 				height = el.parentNode.clientHeight;
+
+// 				// if(width != svg.attr('width')) {
+// 					svg.attr({width: width, height: height});
+// 				// }
+
+// 				min = Math.min(width, height);
 			
 
-				lines.attr("transform","translate("+width / 2 + "," + height / 2 + ")");
+// 				lines.attr("transform","translate("+width / 2 + "," + height / 2 + ")");
 
-				lines.attr("d", line);
+// 				lines.attr("d", line);
 
-				scope.$watch('data', function(data){
-					lines.attr("d", line);
-				});
-		});
+// 				scope.$watch('data', function(data){
+// 					lines.attr("d", line);
+// 				});
+// 		});
 
-  }
+//   }
 
 
-	return {
-		link: link,
-		restrict: "EA",
-		scope: {data: '='}
-	}
+// 	return {
+// 		link: link,
+// 		restrict: "EA",
+// 		scope: {data: '='}
+// 	}
 
-});
+// });
 
 app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter','$q', function ($scope,$modal,$log,$http,$window,$filter,$q) {
 
@@ -160,7 +160,7 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
         });
 
 
-  window.setTimeout(function(){ console.log($scope.influencersData) }, 1000);
+  // window.setTimeout(function(){ console.log($scope.influencersData) }, 1000);
    
 
 	$scope.radioModel = 'subscribers';
@@ -175,20 +175,20 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 		}
 
     var influencersArray = _.filter($scope.influencersData, function(influencer) {
-      console.log(influencer.username)
+      // console.log(influencer.username)
       var keywords = [influencer.username]
       return keywords.some(function(keyword) {
         return (tags.indexOf(keyword) > -1);
       })
     })
 
-    console.log(influencersArray)
+    // console.log(influencersArray)
 
 		$scope.filteredProfiles = _.object(_.map(influencersArray, function(influencer){
         return influencer.username
     }), influencersArray)
 
-    console.log($scope.filteredProfiles)
+    // console.log($scope.filteredProfiles)
 	}
 
   $scope.open = function (size,username) {
