@@ -161,10 +161,6 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 
 
   window.setTimeout(function(){ console.log($scope.influencersData) }, 1000);
-
-  $scope.parseInt = parseInt;
-
-
    
 
 	$scope.radioModel = 'subscribers';
@@ -178,17 +174,25 @@ app.controller('TagsCtrl', ['$scope','$modal','$log','$http','$window','$filter'
 			return; 
 		}
 
-		$scope.filteredProfiles = $scope.influencersData.filter(function(influencer) {
-			var keywords = influencer.title.$t.split(' ')
+    var influencersArray = _.filter($scope.influencersData, function(influencer) {
+      console.log(influencer.username)
+      var keywords = [influencer.username]
+      return keywords.some(function(keyword) {
+        return (tags.indexOf(keyword) > -1);
+      })
+    })
 
-			return keywords.some(function(keyword) {
-				return (tags.indexOf(keyword) > -1);
-			})
-		})
+    console.log(influencersArray)
+
+		$scope.filteredProfiles = _.object(_.map(influencersArray, function(influencer){
+        return influencer.username
+    }), influencersArray)
+
+    console.log($scope.filteredProfiles)
 	}
 
   $scope.open = function (size,username) {
-  	console.log(username);
+  	// console.log(username);
   	
     var modalInstance = $modal.open({
       templateUrl: 'myModalContent.html',
