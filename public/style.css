@@ -1,3 +1,4 @@
+
 /* MIX */
 ul.tag-list .tag-item {
 background: #ff6a6b;
@@ -13,11 +14,6 @@ img {
 
 img:hover{
 	cursor: pointer;
-}
-
-.trend-container, .stats{
-  display: -webkit-flex;
-  -webkit-justify-content: space-between;
 }
 
 .trend{
@@ -207,3 +203,70 @@ h1 {
 	}
 
 /* -- END SEARCH RESULTS -- */
+
+/* - - - MODAL - - - */
+
+.modal-container {
+	height: 500px;
+}
+
+.modal-header {
+	background-color: #EBEBEB;
+	display: flex;
+	justify-content: center;
+	color: #303030;
+}
+
+.modal-header h3 {
+	font-size: 30px;
+}
+
+.modal-header .close {
+	margin-left: auto;
+	position: relative;
+	top: 10px;
+}
+
+.modal-body {
+	display: flex;
+	padding: 30px 30px 0 20px;
+}
+
+.stats {
+	list-style-type: none;
+	text-align: right;
+	width: 350px;
+	margin-left: auto;
+}
+
+.stats .stat {
+	font-size: 25px;
+	font-weight: lighter;
+	color: #454545;
+}
+
+.stats .key {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.stats td {
+	padding-top: 35px;
+	border-bottom: solid 1px lightgrey;
+}
+
+iframe {
+	width: 450px;
+	height: 253px;
+}
+
+.modal-container section {
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+section h3 {
+	color: #454545;
+	font-weight: lighter;
+}
+

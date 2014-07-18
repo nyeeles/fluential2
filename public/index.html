@@ -105,59 +105,32 @@
 </div>
 
   <script type="text/ng-template" id="myModalContent.html">
-    <div>
-        <div class="modal-header">
-            <h3 class="modal-title">{{influencers.profile.title.$t}}</h3>
-        </div>
-        <div class="modal-body">
-            <div class="container">
-              <div class="row">
-                <div class="col-xs-4">
-  
-                  <embed-video data-ng-href="https://youtu.be/{{ influencers.code}}" controls=0></embed-video>
-
-                </div>
-                <div class="col-xs-8">
-                  {{ influencers.profile.content.$t }}
-                </div>
-              </div>
-            </div>
-          
-            <div class="stats">
-              <div> Subscribers: {{ influencers.profile.yt$statistics.subscriberCount }}</div>
-              <div> Views: {{ influencers.profile.yt$statistics.totalUploadViews }}</div>
-              <div> Growth rate: 5%</div>
-            </div>
-          
-
-            <!-- <div class="trend-container">
-              <div class="trend">
-              <trend-line data="[{x:10,y:50},{x:20,y:70},{x:30,y:30},{x:40,y:50},{x:50,y:30},{x:60,y:40},{x:50,y:30},{x:60,y:40}]">
-              </trend-line>
-              </div>
-
-              <div class="trend">
-              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
-              </trend-line>
-              </div>
-
-              <div class="trend">
-              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
-              </trend-line>
-              </div>
-
-              <div class="trend">
-              <trend-line data="[{x:10,y:20},{x:20,y:40},{x:30,y:30},{x:40,y:50},{x:50,y:70}]">
-              </trend-line>
-              </div>
-            </div> -->
-
-        
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">{{influencers.profile.title.$t}}</h3>
+        <i class="fa fa-times fa-2x close" ng-click="ok()" ></i>
+      </div>
+      <div class="modal-body">
+        <embed-video class="test" data-ng-href="https://youtu.be/{{ influencers.code}}" controls=0></embed-video>
+        <table class="stats">
+          <tr class="subscribers">
+            <td class="key">Subscribers:</td>
+            <td class="stat">{{ influencers.profile.yt$statistics.subscriberCount | number:0}}</td>
+          </tr>
+          <tr class="views">
+            <td class="key">Views:</td>
+            <td class="stat">{{ influencers.profile.yt$statistics.totalUploadViews | number:0 }}</td>
+          </tr>
+          <tr class="growth">
+            <td class="key">Growth rate:</td>
+            <td class="stat">5%</td>
+          </tr>
+        </table>
+      </div>
+      <section>
+        <h3>About {{influencers.profile.title.$t}}</h3>
+        <p>{{ influencers.profile.content.$t }}</p>
+      </section>
     </div>  
   </script> 
 

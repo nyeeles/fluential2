@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fluential">
+<head>
+	<meta charset="UTF-8">
+  <link rel="stylesheet" href="style2.css">
+<body>
+<div class="box">
+	<div class="red"></div>	
+	<div class="blue">Yaaaay it works!</div>	
+</div>
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$(".blue").hide()
+
+		$(".red").mouseover(function(){
+			$(".blue").show()
+		});
+		$(".red").mouseout(function(){
+			$(".blue").hide()
+		});
+
+	});
+
+</script>
+</body>
+</html>
+
