@@ -92,13 +92,24 @@ h1 {
 	color: #454545;
 	border-bottom: solid #ff6a6b;
 	margin-left: 100px;
+	padding-bottom: 8px;
+	transition: 0.5s;
+}
+
+.influencer-nav:hover {
+	opacity: 0.5;
 }
 
 .brand-nav {
-	/*background-color: grey;*/
 	color: #454545;
 	border-bottom: solid #17c4ca;
 	margin-right: 100px;
+	padding-bottom: 8px;
+	transition: 0.5s;
+}
+
+.brand-nav:hover {
+	opacity: 0.5;
 }
 /* end influencer and brand menu */
 
