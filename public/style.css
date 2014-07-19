@@ -208,14 +208,14 @@ h1 {
 
 .modal-container {
 	min-height: 500px;
-	padding-bottom: 20px;
+	/*padding-bottom: 20px;*/
+	/*color: #FAFAFA;*/
 }
 
 .modal-header {
 	background-color: #EBEBEB;
-	display: flex;
-	justify-content: center;
 	color: #303030;
+	text-align: center;
 }
 
 .modal-header h3 {
@@ -223,19 +223,19 @@ h1 {
 }
 
 .modal-header .close {
-	margin-left: auto;
 	position: relative;
-	top: 10px;
+	top: -30px;
+	right: 10px;
 }
 
 .modal-body {
 	display: flex;
-	padding: 30px 30px 0 20px;
+	padding: 30px 0px 0 20px;
+	min-height: 310px;
 }
 
 .stats {
 	list-style-type: none;
-	text-align: right;
 	width: 350px;
 	margin-left: auto;
 }
@@ -244,15 +244,17 @@ h1 {
 	font-size: 25px;
 	font-weight: lighter;
 	color: #454545;
+	text-align: right;
 }
 
 .stats .key {
 	font-size: 16px;
 	font-weight: bold;
+	color: #17c4ca;
 }
 
 .stats td {
-	padding-top: 35px;
+	padding-top: 25px;
 	border-bottom: solid 1px lightgrey;
 }
 
@@ -269,5 +271,6 @@ iframe {
 section h3 {
 	color: #454545;
 	font-weight: lighter;
+	margin-top: 0;
 }
 

@@ -93,8 +93,12 @@
             <td class="stat">{{ influencers.profile.yt$statistics.subscriberCount | number:0}}</td>
           </tr>
           <tr class="views">
-            <td class="key">Views:</td>
+            <td class="key">Total views:</td>
             <td class="stat">{{ influencers.profile.yt$statistics.totalUploadViews | number:0 }}</td>
+          </tr>
+          <tr class="average views">
+            <td class="key">Average views:</td>
+            <td class="stat">{{ influencers.averageViews | number:0 }}</td>
           </tr>
           <tr class="growth">
             <td class="key">Growth rate:</td>
