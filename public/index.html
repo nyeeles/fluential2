@@ -14,23 +14,12 @@
 
 <!-- HEADER -->
 
-<nav role="navigation" class="navbar navbar-default">
-  <div class="navbar navbar-header">
-    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-  </div>
-
-  <div id="navbarCollapse" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li class='menu-nav'><a href="#"><span class='brand-nav navicon'>brand menu</span></a></li>
-      <li class='navbar-brand'><a href="#"> </a></li>
-      <li class='menu-nav'><a href="#"><span class='influencer-nav navicon'>influencer menu</span></a></li>
-    </ul>
-  </div>
+<nav role="navigation" class="navbar-default">
+  <ul class="nav">
+    <li class='menu-nav'><a href="#"><span class='brand-nav navicon'>brand menu</span></a></li>
+    <li class='navbar-brand'><a href="#"> </a></li>
+    <li class='menu-nav'><a href="#"><span class='influencer-nav navicon'>influencer menu</span></a></li>
+  </ul>
 </nav>
 
 <!-- END HEADER -->
@@ -82,8 +71,7 @@
             <div class="thumbnail">
               <img src="{{influencer.videos.0.media$group.media$thumbnail.0.url}}" alt="influencer"/>
             </div>
-            <h1>{{influencer.profile.title.$t}}</h1>
-            <p><span class="views-text">{{ influencer.averageViews | number:0 }} views/vid</span></p> 
+            <h2>{{ influencer.averageViews | number:0 }}<span class="views-text">views/vid</span></h2> 
             <p>{{ influencer.profile.content.$t }}</p>
           </div>
         </div>
