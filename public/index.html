@@ -66,7 +66,9 @@
         <section>
           <div ng-repeat="influencer in filteredProfiles | toArray | orderBy:radioModel:!reverse" class="col-md-3 box-container">
             <div class="box">
-              <img ng-click="open('lg',influencer.username)" src="{{influencer.videos.0.media$group.media$thumbnail.0.url}}" alt="influencer"/>
+              <div class="thumbnail">
+                <img ng-click="open('lg',influencer.username)" src="{{influencer.videos.0.media$group.media$thumbnail.0.url}}" alt="influencer"/>
+              </div>
               <h1>{{influencer.profile.title.$t}}</h1>
               
               <p><span class="views-text">{{ influencer.averageViews | number:0 }} views/vid</span></p>
