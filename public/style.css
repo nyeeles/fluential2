@@ -161,11 +161,11 @@ h1 {
 }
 
 .box {
+	height: 310px;
 	background-color: #fff;
 	margin: 20px 5px 10px 5px;
 	border-top: solid turquoise;
 	border-bottom: 2px solid turquoise;
-	padding: 0;
 	overflow: hidden;
 }
 
