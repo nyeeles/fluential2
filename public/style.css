@@ -170,8 +170,21 @@ h1 {
 }
 
 .btn-group {
-	margin-left: 42%;
+	margin-left: 50px;
 	margin-top: 20px;
+	text-align: right;
+}
+
+.btn-default {
+	border-radius: 0;
+	background-color: white;
+	font-size: 12px;
+}
+.btn.active, .btn:active {
+	-webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+  -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
+  -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
+  box-shadow: 0 5px 15px rgba(0,0,0,0);
 }
 
 .box h1 {
